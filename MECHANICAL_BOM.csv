@@ -1,0 +1,15 @@
+Category,Item,Qty,Specification,Notes
+Motion,Servo,1,DS3218 20kg 180-degree 6V,Use metal 25T horn
+Switch,Limit microswitch,2,KW12-3 roller lever NO,Wire COM and NO only
+Optical,Light guide disc,1,82mm x 3mm clear acrylic,Edge engrave or dot pattern
+Optical,Opal diffuser disc,1,82mm x 2-3mm neutral white,Avoid coloured acrylic
+Optical,Diffusion film,1,82mm circular,Two layers if needed
+Lighting,LED strip,1,12V neutral white 4000-5000K,Maximum 1A total
+Liner,Clamp liner,1,0.8mm EVA or cork,Fit gauge assumes 0.8mm
+Fastener,M3 heat-set insert,8,M3 x 5mm brass,Tray and clamp platform
+Fastener,M3 screw,12,M3 assorted 8-16mm,PCB servo plate and diffuser ring
+Fastener,M4 screw and nut,1,M4 x 35mm,Clamp compression ears
+Cable,Servo extension,1,3-wire male-female,Route through enclosure harness opening
+Cable,JST-XH 2-pin pigtail,4,300mm minimum,LED limits and manual switch
+Power,Main supply cable,1,12V centre-positive DC5521 rated 4A,Connects to constant supply
+Control,ASIAIR cable,1,DC5521 male-male centre positive,Connects to adjustable ASIAIR output
