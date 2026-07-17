@@ -264,7 +264,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "redcat51ii-flat-panel-controller-revb-routed.kicad_pro",
+    "filename": "redcat51ii-flat-panel-revc-routed.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -365,8 +365,20 @@
         "pattern": "+12V"
       },
       {
+        "netclass": "Power12",
+        "pattern": "+12V_LED"
+      },
+      {
         "netclass": "Servo6",
         "pattern": "+6V"
+      },
+      {
+        "netclass": "Servo6",
+        "pattern": "+6V_FUSED"
+      },
+      {
+        "netclass": "Servo6",
+        "pattern": "+6V_SERVO"
       },
       {
         "netclass": "Servo6",
@@ -375,6 +387,10 @@
       {
         "netclass": "LogicPower",
         "pattern": "GND"
+      },
+      {
+        "netclass": "LogicPower",
+        "pattern": "LOGIC_VIN"
       },
       {
         "netclass": "LogicPower",
@@ -402,8 +418,8 @@
     "legacy_lib_list": [],
     "top_level_sheets": [
       {
-        "filename": "redcat51ii-flat-panel-controller-revb.kicad_sch",
-        "name": "redcat51ii-flat-panel-controller-revb",
+        "filename": "redcat51ii-flat-panel-revc.kicad_sch",
+        "name": "redcat51ii-flat-panel-revc",
         "uuid": "00000000-0000-0000-0000-000000000000"
       }
     ]

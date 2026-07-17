@@ -1,0 +1,9 @@
+Arduino CLI board: esp32:esp32:esp32s3
+Arduino-ESP32 core: 3.3.10
+ESP32Servo library: 3.2.1
+USBMode: hwcdc
+CDCOnBoot: cdc
+FlashSize: 8M
+PartitionScheme: default_8MB
+PSRAM: disabled
+Merged image flash address: 0x0

@@ -1,55 +1,91 @@
-# RedCat 51 II automated flat panel - integrated PCBA Revision B
+# Universal automated telescope flat panel — Rev C
 
-This release replaces the earlier carrier board with one integrated 120 x 75 mm PCB: ESP32-S3, native USB-C programming, protected 12 V input, optically isolated ASIAIR input, 6.0 V / 4 A servo converter, 3.3 V logic converter, LED MOSFET and all field connectors.
+Rev C is a single-board automated flat-field panel and motorized dust cover. The
+included mechanical preset fits the RedCat 51 II, while the parametric CAD supports
+other telescope/dew-shield diameters without changing the electronics.
 
-## Manufacturing upload set
+Control options:
 
-Upload these three files for a turnkey PCB assembly quote:
+- **ASIAIR Plus:** isolated adjustable-output input on J2.
+- **ASCOM:** USB-C to the included ASCOM Alpaca CoverCalibrator bridge.
+- **Manual:** long-press the onboard or external button.
 
-1. `pcb/Gerbers_RevB.zip`
+ASCOM commands receive a renewable 15-second control lease. If the USB bridge stops,
+the controller automatically returns to ASIAIR control. USB-C can power the logic for
+safe firmware loading, but MAIN 12 V is required for the servo and light panel.
+
+## Rev C improvements
+
+- valid, separately fused input, LED, and servo branches;
+- MCU-switched servo rail that defaults off;
+- keyed JST-XH servo connector;
+- fail-safe normally-closed limit wiring with RC filtering and ESD protection;
+- 12 V presence sensing and USB/12 V logic-power ORing;
+- native USB-C programming and ASCOM data;
+- test pads and UART recovery header;
+- filtered ASIAIR input, command hysteresis, 400 ms stability requirement;
+- debounced limits, ramped motion, move timeout, fault reporting, NVS calibration;
+- LED warm-up/ramp and brightness gamma setting;
+- adjustable-diameter CAD, fit gauge, hard-stop tabs, tether eyes, strain relief,
+  gasket channel, and Customizer-friendly OpenSCAD clamp.
+
+## Manufacturing set
+
+For turnkey PCB assembly upload:
+
+1. `pcb/Gerbers_RevC.zip`
 2. `pcb/BOM.csv`
 3. `pcb/PickAndPlace.csv`
 
-Also attach `pcb/PCB_Assembly_Top.pdf` and the editable KiCad board in the engineering notes. Ask the manufacturer to assemble both SMT and through-hole components. Do not approve substitutions for U1, U3, U4, L1, L2, Q1, C2 or C7 without an electrical review.
+Attach `pcb/PCB_Assembly_Top.pdf` and state that both SMT and through-hole parts are
+to be assembled. Recommended board order:
 
-Recommended order: 4 layers, 1.6 mm FR-4, 2 oz finished copper on all layers, ENIG, lead-free assembly, impedance control not required, electrical test enabled, turnkey parts sourcing, and component-side inspection photographs.
+- 120 x 75 mm, 4 layers, 1.6 mm FR-4;
+- 2 oz finished copper on all layers;
+- ENIG, lead-free assembly;
+- green solder mask and white silkscreen;
+- electrical test, AOI, and assembly inspection photographs;
+- turnkey sourcing with no substitutions for U1, U3, U4, L1, L2, Q1/Q3, F1-F3,
+  C2, or C7 without approval.
 
-## Important release status
+The routed board passes KiCad error-level DRC with **0 errors and 0 unconnected pads**.
+All eight supplied STLs are watertight. Silkscreen-only warnings from edge-mounted
+connector footprints are recorded separately and do not affect copper fabrication.
 
-- KiCad error-level DRC: 0 violations, 0 unconnected pads.
-- Routed power widths: 0.8 mm for 12 V / servo rails, 0.5 mm for ground and logic power; specify 2 oz outer copper.
-- All eight STL files are closed/watertight meshes.
-- The PCB and enclosure dimensions match each other.
-- The only owner-specific dimension is the real dew-shield outside diameter. Print `mechanical/01-diameter-fit-gauge.stl` before the clamp. The default assumes 80.0 mm scope OD, 0.8 mm liner and produces an 82.1 mm clamp bore.
+## Default RedCat preset
 
-This is a fabrication-ready engineering prototype, not a physically qualified commercial product. The manufacturer should perform DFM and parts-availability review before payment. The first assembled board should be powered from a current-limited bench supply and electrically tested before fitting it to the telescope.
+The included STLs use:
 
-## Connections
+- measured scope/dew-shield OD: 80.0 mm;
+- 0.8 mm liner per side;
+- 0.5 mm diametral print clearance;
+- resulting clamp bore: 82.1 mm;
+- optical stack diameter: 82 mm.
 
-- `J1 MAIN 12V`: centre-positive 12 V, 4 A recommended. Powers everything.
-- `J2 ASIAIR PWM`: centre-positive cable from an adjustable ASIAIR Plus DC output. This input is sensed through U5 and does not power the servo.
-- `J3 SERVO`: pin 1 = 6 V, pin 2 = GND, pin 3 = signal.
-- `J4 LED PANEL`: pin 1 = protected 12 V, pin 2 = switched LED negative.
-- `J5 OPEN LIMIT`: pin 1 signal, pin 2 GND; normally-open switch.
-- `J6 CLOSED LIMIT`: pin 1 signal, pin 2 GND; normally-open switch.
-- `J7 EXT MANUAL`: pin 1 signal, pin 2 GND; normally-open button.
-- `J8 USB-C`: firmware programming/data only. Keep MAIN 12V connected while programming.
+Do not assume your telescope matches that measurement. Print the short fit gauge
+first. See `mechanical/PRESETS.md` for other diameters.
 
-## ASIAIR operation
+## Release map
 
-Set the chosen ASIAIR DC port to adjustable/dew-heater mode. Firmware mapping:
+- `pcb/` — Gerbers, BOM, centroid, DRC, PDFs, 3D render, STEP, and KiCad source.
+- `mechanical/` — STL/STEP parts, CadQuery generator, and OpenSCAD Customizer source.
+- `firmware/` — compiled 8 MB ESP32-S3 image and source sketch.
+- `ascom/` — tested Windows Alpaca bridge executable and source.
+- `docs/INSTALLATION.md` — universal physical installation and wiring.
+- `docs/CIRCUIT.md` — circuit blocks, connector map, and GPIO allocation.
+- `docs/CONTROL.md` — ASIAIR, ASCOM, manual operation, and USB command protocol.
+- `docs/FIRST_ARTICLE_TEST.md` — mandatory electrical, thermal, and optical checks.
+- `docs/PCB_ASSEMBLY_ORDER.md` — manufacturer form values and assembly notes.
 
-- 0-2%: panel opens and LED is off.
-- approximately 5%: panel closes and LED remains off (dust-cap mode).
-- 8-100%: panel closes and LED brightness follows the setting.
+## Safety and release status
 
-Verify this mapping with the actual ASIAIR Plus before unattended use; firmware thresholds are intentionally editable.
+This is a fabrication-ready open-hardware prototype, not a physically qualified
+commercial product. DRC, firmware compilation, ASCOM management API, and mesh integrity
+were verified digitally. A real first article must still pass the supplied power,
+servo-stall, thermal, ASIAIR-output, full-mount-clearance, and illumination-uniformity
+tests before unattended use. Always fit the secondary tether.
 
-## Package map
+## License
 
-- `pcb/` - Gerbers, BOM, centroid, assembly PDF, KiCad source and DRC report.
-- `mechanical/` - eight STL and STEP parts plus parametric CadQuery source.
-- `firmware/` - Arduino sketch for the onboard ESP32-S3.
-- `docs/INSTALLATION.md` - physical assembly and scope installation.
-- `docs/CIRCUIT.md` - power/control block diagram and design notes.
-- `MECHANICAL_BOM.csv` - everything not installed during PCBA.
+Hardware, CAD, firmware, bridge software, and documentation are released under
+the GNU General Public License v3.0. See `LICENSE` for the full license text.
