@@ -1,35 +1,44 @@
 Item,Designator,Qty,Manufacturer,Manufacturer Part Number,Description,Package,Assembly Notes
-1,U1,1,Espressif,ESP32-S3-WROOM-1-N8R8,ESP32-S3 module 8MB flash 8MB PSRAM,ESP32-S3-WROOM-1,Antenna end must remain unobstructed
-2,U2,1,STMicroelectronics,USBLC6-2SC6,USB ESD protector,SOT-23-6,
-3,U3,1,Diodes Incorporated,AP62401WU-7,4A synchronous buck PWM,TSOT-23-6,
+1,U1,1,Espressif,ESP32-S3-WROOM-1-N8,ESP32-S3 module 8MB flash,ESP32-S3-WROOM-1,Antenna end at board edge; no PSRAM required
+2,U2,1,STMicroelectronics,USBLC6-2SC6,USB 2-line ESD protector,SOT-23-6,
+3,U3,1,Diodes Incorporated,AP62401WU-7,4A forced-PWM synchronous buck,TSOT-23-6,
 4,U4,1,Diodes Incorporated,AP63203WU-7,3.3V 2A synchronous buck,TSOT-23-6,
 5,U5,1,Lite-On,LTV-817S-TA1,Optocoupler,SMDIP-4 W7.62,
-6,Q1,1,Alpha & Omega Semiconductor,AO4407A,P-channel reverse-polarity MOSFET,SO-8,
+6,Q1 Q3,2,Alpha & Omega Semiconductor,AO4407A,P-channel MOSFET reverse protection / servo switch,SO-8,
 7,Q2,1,Alpha & Omega Semiconductor,AO3400A,N-channel LED MOSFET,SOT-23,
-8,D1,1,Littelfuse,SMBJ18A,18V TVS diode,SMB,Observe cathode mark
-9,D2,1,Diodes Incorporated,1N4148W-7-F,Fast switching diode,SOD-123,Observe cathode mark
-10,F1,1,Bourns,MF-MSMF300/16-2,3A resettable fuse 16V,1812,
-11,L1,1,Coilcraft,XAL6060-332MEB,3.3uH shielded inductor 6.5A,6x6mm,
-12,L2,1,Bourns,SRN6045TA-4R7M,4.7uH shielded inductor,6x6mm,Confirm pad compatibility during DFM
-13,C2,1,Panasonic,EEE-FK1E471P,470uF 25V low-ESR capacitor,10x10.2mm,Observe polarity
-14,C7,1,Panasonic,EEE-FK1A471P,470uF 10V low-ESR capacitor,8x10.2mm,Observe polarity
-15,C4 C9,2,Murata,GRM21BR61E106KA73L,10uF 25V X5R,0805,
-16,C5 C6 C10 C11,4,Murata,GRM21BR61A226ME44L,22uF 10V X5R,0805,
-17,C12,1,Murata,GRM21BR61A106KE19L,10uF 10V X5R,0805,
-18,C1,1,Murata,GRM188R61A105KA61D,1uF 10V X5R,0603,
-19,C3 C8 C13,3,Murata,GRM188R71C104KA01D,100nF 16V X7R,0603,
-20,R1 R2,2,Yageo,RC0603FR-075K1L,5.1k 1%,0603,
-21,R3 R4,2,Yageo,RC0603FR-0722RL,22R 1%,0603,
-22,R5 R6 R8 R10 R12 R13 R14 R15,8,Yageo,RC0603FR-0710KL,10k 1%,0603,
-23,R7,1,Yageo,RC0603FR-0764K9L,64.9k 1%,0603,
-24,R9,1,Yageo,RC0603FR-072K2L,2.2k 1%,0603,
-25,R11,1,Yageo,RC0603FR-07100RL,100R 1%,0603,
-26,R16 R17,2,Yageo,RC0603FR-071KL,1k 1%,0603,
-27,R18,1,Yageo,RC0603FR-07100KL,100k 1%,0603,
-28,LED1,1,Lite-On,LTST-C190TBKT,Blue status LED,0603,Observe polarity
-29,LED2,1,Lite-On,LTST-C190KGKT,Green power LED,0603,Observe polarity
-30,SW1 SW2 SW3,3,E-Switch,TL3301NF160QG,Tactile switch,SMD 6x6mm,
-31,J8,1,GCT,USB4105-GF-A,USB-C USB2 receptacle,16-pin hybrid,Hybrid SMT/THT
-32,J1 J2,2,CUI Devices,PJ-102AH,2.1mm centre-positive DC jack,THT horizontal,Hybrid assembly
-33,J4 J5 J6 J7,4,JST,B2B-XH-A(LF)(SN),2-pin locking header 2.50mm,THT,Hybrid assembly
-34,J3,1,Samtec,TSW-103-07-G-S,3-pin servo header 2.54mm,THT,Hybrid assembly
+8,Q4,1,onsemi,MMBT3904LT1G,NPN servo-gate driver,SOT-23,
+9,D1,1,Littelfuse,SMBJ18A,18V unidirectional TVS diode,SMB,Observe cathode mark
+10,D2,1,Diodes Incorporated,1N4148W-7-F,Optocoupler reverse clamp,SOD-123,Observe cathode mark
+11,D3 D4 D5,3,onsemi,ESD9B3.3ST5G,3.3V bidirectional ESD protection,SOD-923,
+12,D6 D7,2,Diodes Incorporated,SS14-13-F,1A 40V Schottky power OR diode,SMA,Observe cathode mark
+13,F1,1,Bourns,MF-MSMF200/16X-2,2.0A hold 16V resettable input fuse,1812,System continuous input rating is 2A
+14,F2,1,Bourns,MF-MSMF110/16X-2,1.1A hold 16V resettable LED fuse,1812,
+15,F3,1,Bourns,MF-MSMF260/8X-2,2.6A hold 8V resettable servo fuse,1812,
+16,L1,1,Coilcraft,XAL6060-332MEB,3.3uH shielded inductor 6.5A,6x6mm,
+17,L2,1,Bourns,SRN6045TA-4R7M,4.7uH shielded inductor,6x6mm,Confirm pad compatibility during DFM
+18,C2,1,Panasonic,EEE-FK1E471P,470uF 25V low-ESR capacitor,10x10.2mm,Observe polarity
+19,C7,1,Panasonic,EEE-FK1A471P,470uF 10V low-ESR capacitor,8x10.2mm,Observe polarity
+20,C4 C9,2,Murata,GRM21BR61E106KA73L,10uF 25V X5R,0805,
+21,C5 C6 C10 C11,4,Murata,GRM21BR61A226ME44L,22uF 10V X5R,0805,
+22,C12,1,Murata,GRM21BR61A106KE19L,10uF 10V X5R,0805,
+23,C1,1,Murata,GRM188R61A105KA61D,1uF 10V X5R,0603,
+24,C3 C8 C13 C14 C15 C16 C17,7,Murata,GRM188R71C104KA01D,100nF 16V X7R,0603,
+25,R1 R2,2,Yageo,RC0603FR-075K1L,5.1k 1%,0603,
+26,R3 R4,2,Yageo,RC0603FR-0722RL,22R 1%,0603,
+27,R5 R6 R8 R10 R12 R13 R14 R15,8,Yageo,RC0603FR-0710KL,10k 1%,0603,
+28,R7,1,Yageo,RC0603FR-0764K9L,64.9k 1%,0603,
+29,R9,1,Yageo,RC0603FR-072K2L,2.2k 1%,0603,
+30,R11,1,Yageo,RC0603FR-07100RL,100R 1%,0603,
+31,R16 R17 R24 R25 R26,5,Yageo,RC0603FR-071KL,1k 1%,0603,
+32,R18 R19 R22 R23,4,Yageo,RC0603FR-07100KL,100k 1%,0603,
+33,R20,1,Yageo,RC0603FR-0722KL,22k 1%,0603,
+34,R21,1,Yageo,RC0603FR-074K7L,4.7k 1%,0603,
+35,LED1,1,Lite-On,LTST-C190TBKT,Blue status LED,0603,Observe polarity
+36,LED2,1,Lite-On,LTST-C190KGKT,Green power LED,0603,Observe polarity
+37,SW1 SW2 SW3,3,E-Switch,TL3301NF160QG,Tactile switch,SMD 6x6mm,
+38,J8,1,GCT,USB4105-GF-A,USB-C USB2 receptacle,16-pin hybrid,Hybrid SMT/THT
+39,J1 J2,2,Same Sky,PJ-102AH,DC barrel jack 2.5A,THT horizontal,Hybrid assembly; MAIN is fused to 2A continuous
+40,J4 J5 J6 J7,4,JST,B2B-XH-A(LF)(SN),2-pin keyed header 2.50mm,THT,Hybrid assembly
+41,J3,1,JST,B3B-XH-A(LF)(SN),3-pin keyed servo header 2.50mm,THT,Pin 1 6V; pin 2 GND; pin 3 signal
+42,J9,1,Samtec,TSW-103-07-G-D,2x3 UART recovery header 2.54mm,THT,Optional service connector
+43,TP1 TP2 TP3 TP4 TP5 TP6 TP7 TP8,8,Generic,DNP,1mm test pad,DNP,No component fitted
