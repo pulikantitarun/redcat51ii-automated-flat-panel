@@ -1,0 +1,17 @@
+﻿# Python
+__pycache__/
+*.pyc
+
+# KiCad transient / per-user
+*.kicad_prl
+*-backups/
+fp-info-cache
+*.lck
+
+# Specctra round-trip intermediates
+*.dsn
+*.ses
+
+# OS
+.DS_Store
+Thumbs.db
