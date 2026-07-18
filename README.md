@@ -298,3 +298,13 @@ pcb/
     verify_board.py          36 netlist/stackup assertions
     generate_bom.py
 ```
+
+## License
+
+Copyright (C) 2026 pulikantitarun
+
+This project - the mechanical design files, firmware, PCB design, and documentation - is licensed under the **GNU Affero General Public License, version 3 or later (AGPL-3.0-or-later)**. See [LICENSE](LICENSE) for the full text.
+
+You are free to use, study, share, and modify this work, including as forks. In return, the copyleft terms require that if you distribute a modified version - or run a modified version to offer a service over a network - you make your modified source available under this same license. Forks and derivatives must remain AGPL-3.0.
+
+Note on scope: AGPL is a software license. It fits the firmware and the generator scripts cleanly; the mechanical CAD/STL and PCB design files are released under it here as copyrightable design works. If you later want a copyleft written specifically for physical hardware, CERN-OHL-S is the usual companion, but AGPL across the whole repository is a common, valid choice and satisfies the goal that forks stay open. This paragraph is not legal advice.
