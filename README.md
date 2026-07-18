@@ -65,6 +65,11 @@ The included STLs use:
 Do not assume your telescope matches that measurement. Print the short fit gauge
 first. See `mechanical/PRESETS.md` for other diameters.
 
+An additional ready-generated **Askar 103 APO starting preset** is included in
+`mechanical/presets/Askar-103-APO`. It uses the published 122 mm dew-shield OD,
+a 124.1 mm lined clamp bore, and a 125 mm illuminated stack. Measure the actual
+shield and print its fit gauge before using the full clamp.
+
 ## Release map
 
 - `pcb/` — Gerbers, BOM, centroid, DRC, PDFs, 3D render, STEP, and KiCad source.
